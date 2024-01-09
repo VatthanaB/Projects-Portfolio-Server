@@ -21,7 +21,11 @@ router.post(
 
       res.status(201).json(newFood);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      if (error instanceof Error) {
+        return res.status(500).send({
+          message: error.message,
+        });
+      }
     }
   }
 );
@@ -31,7 +35,11 @@ router.get("/getFood", async (req: Request, res: Response) => {
     const food = await Food.find({});
     res.status(200).json(food);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
@@ -51,8 +59,11 @@ router.post(
 
       res.status(201).json(newOrder);
     } catch (error) {
-      console.log(error);
-      res.status(400).json({ message: error.message });
+      if (error instanceof Error) {
+        return res.status(500).send({
+          message: error.message,
+        });
+      }
     }
   }
 );

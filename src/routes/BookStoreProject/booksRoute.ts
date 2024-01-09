@@ -31,9 +31,11 @@ router.post("/", async (req: Request<{}, {}, BookBody>, res: Response) => {
     const book = await Book.create(newBook);
     return res.status(201).send(book);
   } catch (error) {
-    return res.status(500).send({
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
@@ -46,9 +48,11 @@ router.get("/", async (req: Request, res: Response) => {
       data: books,
     });
   } catch (error) {
-    return res.status(500).send({
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
@@ -59,9 +63,11 @@ router.get("/:id", async (req: Request, res: Response) => {
     const book = await Book.findById(id);
     return res.status(200).json(book);
   } catch (error) {
-    return res.status(500).send({
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
@@ -84,10 +90,11 @@ router.put("/:id", async (req: RequestWithIdParam, res: Response) => {
     }
     return res.status(200).json({ message: "Book updated successfully" });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
@@ -103,10 +110,11 @@ router.delete("/:id", async (req: Request, res: Response) => {
     }
     return res.status(200).json({ message: "Book deleted successfully" });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      return res.status(500).send({
+        message: error.message,
+      });
+    }
   }
 });
 
