@@ -5,6 +5,7 @@ import { Book } from "./models/bookModel";
 import booksRoute from "./routes/BookStoreProject/booksRoute";
 import foodAppRoute from "./routes/FoodOrderingApp/foodAppRoutes";
 import mongoose from "mongoose";
+import personalPage from "./routes/PersonalPage/personalPage";
 config();
 
 const app: Express = express();
@@ -23,6 +24,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/books", booksRoute);
 app.use("/food", foodAppRoute);
+app.use("/personal", personalPage);
+
 mongoose
   .connect(mangoURL)
   .then(() => {
