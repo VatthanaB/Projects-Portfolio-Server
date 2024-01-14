@@ -11,7 +11,7 @@ config();
 const app: Express = express();
 app.use(express.json());
 
-app.use(cors({ origin: "*" }));
+app.use(cors());
 
 const port: string | number = process.env.PORT || 5555;
 const mangoURL: string = process.env.MANGO as string;
