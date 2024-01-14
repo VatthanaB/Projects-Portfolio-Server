@@ -11,7 +11,14 @@ config();
 const app: Express = express();
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://vatthana-boulom.vercel.app/",
+      "https://projects-portfolio-vatthana.vercel.app/",
+    ],
+  })
+);
 
 const port: string | number = process.env.PORT || 5555;
 const mangoURL: string = process.env.MANGO as string;
