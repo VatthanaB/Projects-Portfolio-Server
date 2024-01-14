@@ -9,7 +9,6 @@ const cors_1 = __importDefault(require("cors"));
 const booksRoute_1 = __importDefault(require("./routes/BookStoreProject/booksRoute"));
 const foodAppRoutes_1 = __importDefault(require("./routes/FoodOrderingApp/foodAppRoutes"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const personalPage_1 = __importDefault(require("./routes/PersonalPage/personalPage"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -23,7 +22,6 @@ app.get("/", (req, res) => {
 });
 app.use("/books", booksRoute_1.default);
 app.use("/food", foodAppRoutes_1.default);
-app.use("/personal", personalPage_1.default);
 mongoose_1.default
     .connect(mangoURL)
     .then(() => {
