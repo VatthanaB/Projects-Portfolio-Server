@@ -12,6 +12,9 @@ interface MailData {
   message: string;
 }
 
+router.get("/contact", (req: Request, res: Response) => {
+  return res.status(200).send("personal page route");
+});
 router.post("/contact", (req: Request, res: Response) => {
   const data: MailData = req.body;
 
