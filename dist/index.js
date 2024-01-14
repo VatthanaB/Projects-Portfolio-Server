@@ -13,7 +13,12 @@ const mongoose_1 = __importDefault(require("mongoose"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: [
+        "https://vatthana-boulom.vercel.app/",
+        "https://projects-portfolio-vatthana.vercel.app/",
+    ],
+}));
 const port = process.env.PORT || 5555;
 const mangoURL = process.env.MANGO;
 app.get("/", (req, res) => {
