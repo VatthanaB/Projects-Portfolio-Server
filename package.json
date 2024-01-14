@@ -1,7 +1,4 @@
 {
-  "engines": {
-    "node": "14.x"
-  },
   "name": "backend",
   "version": "1.0.0",
   "description": "",
