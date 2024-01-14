@@ -46,15 +46,18 @@ router.post("/contact", (req: Request, res: Response) => {
     `,
   };
 
-  smtpTransporter.sendMail(mailOptions, (error, response) => {
-    if (error) {
-      return res.status(500).json({
-        msg: "Something went wrong on our end. Please try again later.",
-      });
-    } else {
-      return res.json({ msg: "Thank you for contacting Vatthana" });
+  smtpTransporter.sendMail(
+    mailOptions,
+    (error: Error | null, response: nodemailer.SentMessageInfo) => {
+      if (error) {
+        return res.status(500).json({
+          msg: "Something went wrong on our end. Please try again later.",
+        });
+      } else {
+        return res.json({ msg: "Thank you for contacting Vatthana" });
+      }
     }
-  });
+  );
 });
 
 export default router;
