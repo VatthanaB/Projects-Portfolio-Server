@@ -10,7 +10,6 @@ This repository contains the backend code for my portfolio projects website. The
 - [Endpoints](#endpoints)
 - [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
