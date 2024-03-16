@@ -1,13 +1,16 @@
-import express from "express";
-const router = express.Router();
+import express, { Request, Response } from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-router.get("/", (req, res) => {
+const router = express.Router();
+
+router.get("/", (req: Request, res: Response) => {
   return res.status(200).send("Email route is working");
 });
-router.post("/contact", (req, res) => {
+
+router.post("/contact", (req: Request, res: Response) => {
   let data = req.body;
   if (
     data.name.length === 0 ||
@@ -25,6 +28,7 @@ router.post("/contact", (req, res) => {
       pass: process.env.PASSWORD,
     },
   });
+
   let mailOptions = {
     from: data.email,
     to: "boulom.vatthana.pro@gmail.com",
@@ -39,18 +43,14 @@ router.post("/contact", (req, res) => {
     <p>${data.message}</p>
     `,
   };
+
   smtpTransporter.sendMail(mailOptions, (error, response) => {
-    try {
-      if (error)
-        return res.status(500).json({
-          msg: "Something went wrong on our end. Please try again later.",
-        });
-      else return res.json({ msg: "Thank you for contacting Vatthana" });
-    } catch (error) {
-      if (error)
-        return res.status(500).json({
-          msg: "Something went wrong on our end. Please try again later.",
-        });
+    if (error) {
+      return res.status(500).json({
+        msg: "Something went wrong on our end. Please try again later.",
+      });
+    } else {
+      return res.json({ msg: "Thank you for contacting Vatthana" });
     }
   });
 });
