@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc --output public",
+    "build": "tsc --outDir public",
     "postinstall": "tsc",
     "heroku-postbuild": "node -v"
   },
