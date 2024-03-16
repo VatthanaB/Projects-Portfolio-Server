@@ -5,10 +5,12 @@ import { Book } from "../models/bookModel";
 import booksRoute from "../routes/BookStoreProject/booksRoute";
 import foodAppRoute from "../routes/FoodOrderingApp/foodAppRoutes";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 config();
 
 const app: Express = express();
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 

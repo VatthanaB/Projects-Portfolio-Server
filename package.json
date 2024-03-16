@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node api/index.ts",
+    "start": "node dist/api/index.js",
     "build": "tsc --outDir public",
     "postinstall": "tsc",
     "heroku-postbuild": "node -v"
