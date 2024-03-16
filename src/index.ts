@@ -1,9 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import { config } from "dotenv";
 import cors from "cors";
-import { Book } from "../models/bookModel";
-import booksRoute from "../routes/BookStoreProject/booksRoute";
-import foodAppRoute from "../routes/FoodOrderingApp/foodAppRoutes";
+import { Book } from "./models/bookModel";
+import booksRoute from "./routes/BookStoreProject/booksRoute";
+import foodAppRoute from "./routes/FoodOrderingApp/foodAppRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 config();
@@ -36,3 +36,5 @@ mongoose
   .catch((err: any) => {
     console.error(err);
   });
+
+export default app;

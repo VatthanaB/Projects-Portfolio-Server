@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node dist/api/index.js",
-    "build": "tsc --outDir public",
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
     "postinstall": "tsc",
-    "heroku-postbuild": "node -v"
+    "heroku-postbuild": "node -v",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",
