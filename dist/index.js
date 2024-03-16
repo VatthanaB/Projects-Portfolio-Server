@@ -9,9 +9,11 @@ const cors_1 = __importDefault(require("cors"));
 const booksRoute_1 = __importDefault(require("./routes/BookStoreProject/booksRoute"));
 const foodAppRoutes_1 = __importDefault(require("./routes/FoodOrderingApp/foodAppRoutes"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const body_parser_1 = __importDefault(require("body-parser"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-app.use(express_1.default.json());
+app.use(body_parser_1.default.json());
+app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)());
 const port = process.env.PORT || 5555;
 const mangoURL = process.env.MANGO;
@@ -33,3 +35,4 @@ mongoose_1.default
     .catch((err) => {
     console.error(err);
 });
+exports.default = app;
