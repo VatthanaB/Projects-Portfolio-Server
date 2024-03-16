@@ -4,6 +4,7 @@ import cors from "cors";
 import { Book } from "./models/bookModel";
 import booksRoute from "./routes/BookStoreProject/booksRoute";
 import foodAppRoute from "./routes/FoodOrderingApp/foodAppRoutes";
+import mailRoute from "./routes/mailHandlingPersonalPage/email";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 config();
@@ -25,6 +26,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/books", booksRoute);
 app.use("/food", foodAppRoute);
+app.use("/email", mailRoute);
 mongoose
   .connect(mangoURL)
   .then(() => {
