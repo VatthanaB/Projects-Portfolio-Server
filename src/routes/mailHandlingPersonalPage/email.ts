@@ -4,6 +4,9 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
 
+router.get("/", (req, res) => {
+  return res.status(200).send("Email route is working");
+});
 router.post("/contact", (req, res) => {
   let data = req.body;
   if (
